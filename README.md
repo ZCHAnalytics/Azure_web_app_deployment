@@ -1,4 +1,4 @@
----
+
 page_type: sample
 languages:
 - azdeveloper
@@ -12,6 +12,7 @@ products:
 - azure-app-service
 - azure-monitor
 - azure-pipelines
+
 urlFragment: todo-nodejs-mongo
 name: React Web App with Node.js API and MongoDB on Azure
 description: A complete ToDo app on Azure App Service with Node.js API and Azure Cosmos API for MongoDB for storage. Uses Azure Developer CLI (azd) to build, deploy, and monitor
