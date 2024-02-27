@@ -74,7 +74,9 @@ I can also update the whole environment by running the`azd up` command again.
 
 ## 5. Configure a CI/CD Pipeline
 
-In the previous steps, the workflows were managed by individual commands. I now automate these workflows with a CI/CD pipeline. I test it by pushing the commit to the Github Repo to see if the pipeline re-runs, incorporating changes to the source code and infrastructure code. The result should be a new website called 'Ticket Master' with an associated Azure storage.
+In the previous steps, the workflows were managed by individual commands. The workflows can be automated with a CI/CD pipeline with either GitHub Actions or Azure Pipelines. This way Azure environment can be automatically updated with the latest changes by committing and pushing changes to GitHub.
+
+I now automate these workflows with a CI/CD pipeline in GitHub. I test it by pushing the commit to the Github Repo to see if the pipeline re-runs, incorporating changes to the source code and infrastructure code. The result should be a new website called 'Ticket Master' with an associated Azure storage.
 
 ### 5.1. Setup pipeline in Github
 

@@ -1,1 +1,6 @@
 .azure
+azure_pipe_user_notebook.ipnb
+creds.py
+
+Azure pipelines module
+https://learn.microsoft.com/en-us/training/paths/deploy-applications-with-azure-devops/ 

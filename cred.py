@@ -1,0 +1,4 @@
+# cicd_test token: i3j5u2wxviy7j27lerjrzmuiyrb3dlidegigio3l5w7ildxwqtrq
+# organization: zchanalytics0850
+
+GitHUb PAT: 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
