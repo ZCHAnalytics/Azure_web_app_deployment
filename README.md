@@ -1,7 +1,7 @@
 # CI/CD Pipeline for an Interactive Ticket Master App on Azure
 
 ## Description: 
-Thisproject involves building a complete customer ticketing app hosted on Azure App Service with Node.js API and Azure Cosmos API for MongoDB for storage. In the project I use Azure Developer CLI modules from Microsoft Learn.
+This project involves building a complete customer ticketing app hosted on Azure App Service with Node.js API and Azure Cosmos API for MongoDB for storage. In the project I use Azure Developer CLI modules from Microsoft Learn.
 
 
 ## The Application Architecture
