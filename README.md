@@ -1,9 +1,8 @@
 # CI/CD Pipeline for an Interactive Ticket Master App on Azure
 
 ## Description: 
-A complete customer ticketing app on Azure App Service with Node.js API and Azure Cosmos API for MongoDB for storage. 
+A complete customer ticketing app hosted on Azure App Service with Node.js API and Azure Cosmos API for MongoDB for storage. 
 
-Note: You can navigate the contents table by clicking on hamburger icon (three lines) on top of this window.
 
 ## The Application Architecture
 
@@ -22,10 +21,7 @@ Here's a high level architecture diagram that illustrates these components. Noti
 ## 0. Environment setup
 ### 0.0. Prerequisites
 
-- [Azure Developer CLI](https://aka.ms/azd-install)
-- [Node.js with npm (18.17.1+)](https://nodejs.org/) - for API backend and Web frontend
-
-I use Azure Developer CLI (azd) for streamlined provisioning and deployment to Azure. It has the following features: 
+I use the Azure Developer CLI (azd) for streamlined provisioning and deployment to Azure. It has the following features: 
 
 - simple commands for workflow steps
 - a library of reusable, extensible templates that are pre-configured for common scenarios
@@ -33,13 +29,12 @@ I use Azure Developer CLI (azd) for streamlined provisioning and deployment to A
 - portable, reusable infrastructure as code scaffolding for the project
 - compatibility and support for CI/CD pipelines and monitoring
 
+I also use the [Node.js with npm (18.17.1+)](https://nodejs.org/) with npm (Node Package Manager) for API and Web development.
 
----
-<!-- YAML front-matter schema: https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main#supported-metadata-fields-for-readmemd -->
 
 ### 0.1. Application Code
 
-I use template for an interactive Web App template with Node.js API and MongoDB on Azure. The blueprint includes sample application code (a ToDo web app). 
+I use an existing template for an interactive Web App hosted on Azure. The blueprint includes a server-side application written in Node.js, which serves as a server-side API, MongoDB on Azure for data storage, and a sample interactive application code (a ToDo web app) for user-side functionality. 
 
 For specifics please see file: [Initial Setup](0_env_setup.ipynb)
 
@@ -47,11 +42,12 @@ For specifics please see file: [Initial Setup](0_env_setup.ipynb)
 ## 1. Provision and Deploy the Application Architecture
 
 ### 1.1. Breakdown of the process in three steps
+
 I need to package the app, provision the necessary hosting infrastructure and deploy the web app. This can be initiated with one command `azd up` that runs the three separate commands in sequence:
 
-1. `azd package` for packing web app 
-2. `azd provision` for provisioning infrastructure
-3. `azd deploy` for deploying web app hosted on provisioned infrastructure
+a. `azd package` for packing web app 
+b. `azd provision` for provisioning infrastructure
+c. `azd deploy` for deploying web app hosted on provisioned infrastructure
 
 For specifics and images check this file: [Provision and Deploy](1_node_app_deploy.ipynb)
 
@@ -63,7 +59,7 @@ There are three monitoring dashboards: overview, live metrics and logs. See the 
 ## 3. Customise Web Application Code 
 In this project, website owner wants to use the interactive template for tracking customer tickets.
 
-I use text editor, Vim, to change the source code and then a granular `azd deploy` command to edit text in the web app without affecting the underlying infrastructure. This saves time. For specifics, see [Edit source code](3_customise_source_code.ipynb).
+I use text editor to change the source code and then a granular `azd deploy` command to edit text in the web app without affecting the underlying infrastructure. This saves time. For specifics, see [Edit source code](3_customise_source_code.ipynb).
 
 It is also possible to change the code by updating the whole environment with the`azd up` command.
 
@@ -72,7 +68,7 @@ It is also possible to change the code by updating the whole environment with th
 
 The company also needs to provide functionality for customers to upload their documents. Current infrastructure does not have any storage allocated, so I need to introduce the infrastructure. 
 
-I edit infrastructure code files with Vim editor and then use the granular `azd provision` to change infrastructure without executing application code. For specifics, see [Edit IaaC](4_customise_infrastructure.ipynb)  
+I edit infrastructure code files with a text editor and then use the granular `azd provision` to change infrastructure without executing application code. For specifics, see [Edit IaaC](4_customise_infrastructure.ipynb)  
 
 I can also update the whole environment by running the`azd up` command again.
 
@@ -82,7 +78,9 @@ In the previous steps, the workflows were managed by individual commands. I now 
 
 ### 5.1. Setup pipeline in Github
 
-For specifics, see [CI/CD](5_cicd.ipynb).
+I run a pipeline in GitHub Actions and then check if it automatically re-runs when I push a commit with edited README file. When the workflow completes, I check if the custom changes to the source code (replacing 'Todo' with 'Ticket Master') and infrastructure (creating storage for the database) are replicated.   
+
+For details and images of the process, see [CI/CD](5_cicd.ipynb).
 
 ## 6. Clean Up and Release Resources
 
@@ -98,13 +96,8 @@ This template creates a [managed identity](https://docs.microsoft.com/azure/acti
 
 This template uses [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) to securely store the Cosmos DB connection string for the provisioned Cosmos DB account. Key Vault is a cloud service for securely storing and accessing secrets (API keys, passwords, certificates, cryptographic keys) and makes it simple to give other Azure services access to them. 
 
-## 8. Useful resources
+## 8. Tools
 
-- [Run and Debug Locally](https://learn.microsoft.com/azure/developer/azure-developer-cli/debug?pivots=ide-vs-code) - using Visual Studio Code and the Azure Developer CLI extension
+Azure Developer CLI, Windows PowerShell, Git Hub
 
-
-- [Enable optional features, like APIM](./OPTIONAL_FEATURES.md) - for enhanced backend API protection and observability
-
-## 9. Tools
-
-Azure Developer CLI, Windows PowerShell, GitHub, Vim text editor. 
+Git Bash, Visual Studio Code, Vim text editor 
