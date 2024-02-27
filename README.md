@@ -3,42 +3,39 @@
 ## Description: 
 A complete ToDo app on Azure App Service with Node.js API and Azure Cosmos API for MongoDB for storage. 
 
-Uses Azure Developer CLI (azd) to build, deploy, and monitor
----
-<!-- YAML front-matter schema: https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main#supported-metadata-fields-for-readmemd -->
+Content:
+## 0. Initial set up using an interactive web app template 
+## 1. Provision cloud resources and deploy the required web app
+## 2. Monitoring options
+## 3. Customising web application code 
+## 4. Customising infrastructure code 
+## 5. CI/CD Pipeline
+## 6. Tools
 
-# React Web App with Node.js API and MongoDB on Azure
-
-[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/azure-samples/todo-nodejs-mongo)
-[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/todo-nodejs-mongo)
-
-A blueprint for getting a React web app with a Node.js API and a MongoDB database running on Azure. The blueprint includes sample application code (a ToDo web app). I modify it slightly and then leverage the Infrastructure as Code assets (written in Bicep) to create a fully functional web app.
-
-I then setup a pipeline and monitor the application.
-
-!["Screenshot of deployed ToDo app"](assets/web.png)
-
-<sup>Screenshot of the deployed ToDo app</sup>
+## 0. Initial set up using a template
 
 ### Prerequisites
+
 - [Azure Developer CLI](https://aka.ms/azd-install)
 - [Node.js with npm (18.17.1+)](https://nodejs.org/) - for API backend and Web frontend
 
-### Quickstart
-I follow the steps in [this quickstart](https://learn.microsoft.com/azure/developer/azure-developer-cli/get-started?tabs=localinstall&pivots=programming-language-nodejs) with this template(`Azure-Samples/todo-nodejs-mongo`).
+I use Azure Developer CLI (azd) for streamlined provisioning and deployment to Azure. It has the following features: 
 
-This quickstart helps authenticate on Azure, initialize using a template, provision infrastructure and deploy code on Azure via the following commands:
+- simple commands for workflow steps
+- a library of reusable, extensible templates that are pre-configured for common scenarios
+- the ability to convert existing projects into new azd templates
+- portable, reusable infrastructure as code scaffolding for the project
+- compatibility and support for CI/CD pipelines and monitoring
 
-```bash
-# Log in to azd. Only required once per-install.
-azd auth login
 
-# First-time project setup. Initialize a project in the current directory, using this template. 
-azd init --template Azure-Samples/todo-nodejs-mongo
+---
+<!-- YAML front-matter schema: https://review.learn.microsoft.com/en-us/help/contribute/samples/process/onboarding?branch=main#supported-metadata-fields-for-readmemd -->
 
-# Provision and deploy to Azure
-azd up
-```
+### Application Code
+
+I use template for React Web App with Node.js API and MongoDB on Azure. It is structured to follow the [Azure Developer CLI](https://aka.ms/azure-dev/overview).
+
+The blueprint includes sample application code (a ToDo web app). I modify it slightly and then leverage the Infrastructure as Code assets (written in Bicep) to create a fully functional web app.
 
 ### Application Architecture
 
@@ -53,10 +50,31 @@ Here's a high level architecture diagram that illustrates these components. Noti
 
 !["Application architecture diagram"](assets/resources.png)
 
+## 2. Monitoring options
 
-### Application Code
+There are three monitoring dashboards: overview, live metrics and logs. See the file for examples.
 
-This template is structured to follow the [Azure Developer CLI](https://aka.ms/azure-dev/overview). 
+## 3. Customising web application code 
+
+I use text editor, Vim, to change the source code and then a granular `azd deploy` command which changes text in the web app without affecting the underlying infrastructure. This saves time. For specifics, see the notebook: []
+
+It is also possible to change the code by updating the whole environment with the`azd up` command.
+
+## 4. Customising infrastructure code 
+
+In this project, the company needs to change infrastructure to provision storage space for website users to upload files. 
+
+I edit infrastructure code files with Vim editor and then use the granular `azd provision` to change infrastructure without executing application code. For specifics, see []  
+
+I can also update the whole environment by running the`azd up` command again.
+
+## 5. Configure a CI/CD Pipeline
+
+In the previous steps, the workflows were managed by running individual commands to apply changes to the environment. I now automate these workflows with a CI/CD pipeline For specifics, see[].
+
+!["Screenshot of deployed ToDo app"](assets/web.png)
+
+<sup>Screenshot of the deployed ToDo app</sup>
 
 ### Setup pipelines, monitor your application, test and debug locally.
 
@@ -81,3 +99,6 @@ This template creates a [managed identity](https://docs.microsoft.com/azure/acti
 ### Key Vault
 
 This template uses [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) to securely store the Cosmos DB connection string for the provisioned Cosmos DB account. Key Vault is a cloud service for securely storing and accessing secrets (API keys, passwords, certificates, cryptographic keys) and makes it simple to give other Azure services access to them. 
+
+## 6. Tools
+Vim text editor
