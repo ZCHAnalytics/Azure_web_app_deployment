@@ -82,23 +82,32 @@ I now automate these workflows with a CI/CD pipeline in GitHub. I test it by pus
 
 I run a pipeline in GitHub Actions and then check if it automatically re-runs when I push a commit with edited README file. When the workflow completes, I check if the custom changes to the source code (replacing 'Todo' with 'Ticket Master') and infrastructure (creating storage for the database) are replicated.   
 
-For details and images of the process, see [CI/CD](5_cicd.ipynb).
+For details and images of the process, see [CI/CD](5_cicd_github.ipynb).
 
-## 6. Clean Up and Release Resources
+## 6. Setup pipeline in AzureDevOps ...in progress
+
+I remove the GitHub remote origin and add Azure DevOps by running `azd pipeline config --provider azdo`. This successfully creates a repository in Azure DevOps. 
+
+[In progress... need to verify the pipeline triggers] 
+
+For details and images of the process, see [CI/CD Azure DevOps](6_cicd_azure.ipynb).
+
+
+## 7. Clean Up and Release Resources
 
 [`azd down`](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-down) - to delete all the Azure resources created with this template 
 
-## 7. Security
+## 8. Security
 
-### 7.1. Roles
+### 8.1. Roles
 
 This template creates a [managed identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) for the app inside the Azure Active Directory tenant. It is used to authenticate the  app with Azure and other services that support Azure AD authentication like Key Vault via access policies. 
 
-### 7.2. Key Vault
+### 8.2. Key Vault
 
 This template uses [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) to securely store the Cosmos DB connection string for the provisioned Cosmos DB account. Key Vault is a cloud service for securely storing and accessing secrets (API keys, passwords, certificates, cryptographic keys) and makes it simple to give other Azure services access to them. 
 
-## 8. Tools
+## 9. Tools
 
 Azure Developer CLI, Windows PowerShell, Git Hub
 
